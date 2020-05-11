@@ -6,17 +6,17 @@ from pyspark.sql import SparkSession
 
 class PySparkTestBase(unittest.TestCase):
 
-    sparkSession = None
+    spark = None
 
     @classmethod
     def setUpClass(cls):
         conf = pyspark.SparkConf().setMaster("local[2]").setAppName("interview testing")
-        cls.sparkSession = SparkSession.builder.config(conf=conf).getOrCreate()
-        cls.sparkContext = cls.sparkSession.sparkContext
+        cls.spark = SparkSession.builder.config(conf=conf).getOrCreate()
+        cls.spark_ctx = cls.spark.sparkContext
 
     @classmethod
     def tearDownClass(cls):
-        cls.sparkSession.stop()
+        cls.spark.stop()
 
     def setUp(self):
         warnings.simplefilter("ignore", ResourceWarning)

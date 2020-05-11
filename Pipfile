@@ -8,6 +8,7 @@ pyspark = "==2.4.5"
 
 [packages]
 psutil = "*"
+pandas = "*"
 
 [requires]
 python_version = "3.7"
